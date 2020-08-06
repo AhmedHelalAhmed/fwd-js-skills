@@ -19,6 +19,17 @@ const postData = async (url = "", data = {}) => {
   }
 };
 
+const retrieveData = async (url = "") => {
+  const response = await fetch(url);
+  try {
+    // Transform into JSON
+    const allData = await response.json();
+  } catch (error) {
+    console.log("error", error);
+    // appropriately handle the error
+  }
+};
+
 postData("/addMovie", { movie: "the matrix", score: 5 });
 postData("/addMovie", { movie: "pitch perfect", score: 4.5 });
 // postData("/add", { answer: 42 });

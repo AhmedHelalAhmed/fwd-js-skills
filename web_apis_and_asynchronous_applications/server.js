@@ -66,3 +66,13 @@ app.post("/add", function (request, response) {
   projectData["intelligence"] = data.intelligence;
   console.log(data);
 });
+
+const fakeData = {
+  animal: "lion",
+  fact: "lions are fun!",
+};
+
+app.get("/fakeAnimalData", getFakeData);
+function getFakeData(request, response) {
+  response.send(fakeData);
+}
