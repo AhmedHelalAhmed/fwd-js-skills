@@ -56,9 +56,13 @@ function addMovie(request, response) {
   console.log(data);
 }
 
-
 app.post("/animal", addAnimal);
 
 function addAnimal(request, response) {
   data.push(request.body);
 }
+app.post("/add", function (request, response) {
+  let data = request.body;
+  projectData["intelligence"] = data.intelligence;
+  console.log(data);
+});

@@ -21,3 +21,4 @@ const postData = async (url = "", data = {}) => {
 
 postData("/addMovie", { movie: "the matrix", score: 5 });
 postData("/addMovie", { movie: "pitch perfect", score: 4.5 });
+// postData("/add", { answer: 42 });
