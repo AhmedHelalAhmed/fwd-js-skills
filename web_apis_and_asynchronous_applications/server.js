@@ -50,7 +50,15 @@ app.post("/", function (request, response) {
 
 const data = [];
 app.post("/addMovie", addMovie);
-function addMovie(req, res) {
-  console.log(req.body);
-  data.push(req.body);
+function addMovie(request, response) {
+  //   console.log(request.body);
+  data.push(request.body);
+  console.log(data);
+}
+
+
+app.post("/animal", addAnimal);
+
+function addAnimal(request, response) {
+  data.push(request.body);
 }
