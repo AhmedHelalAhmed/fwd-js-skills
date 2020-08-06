@@ -7,12 +7,20 @@
   </head>
   <body>
     <div>
-      <input type="text" id="animal" placeholder="animal" />
+      <label for="animal">Enter the name of your favorite animal</label>
+      <input id="animal" name="animal" />
     </div>
-    <div>
-      <textarea id="fav"></textarea>
-    </div>
-    <button id="generate">Go</button>
+    <textarea
+      id="favorite"
+      placeholder="Enter your favorite thing about your favorite animal"
+      rows="9"
+      cols="50"
+    ></textarea>
+    <button id="generate">GO</button>
+    <div>Animal is</div>
+    <div id="animalName"></div>
+    <div id="animalFact"></div>
+    <div id="animalFav"></div>
     <script src="app.js"></script>
     <!-- <script src="synchronous.js"></script> -->
     <!-- <script src="Asynchronous.js"></script> -->

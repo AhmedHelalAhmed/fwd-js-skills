@@ -7,7 +7,7 @@ document.getElementById("generate").addEventListener("click", performAction);
 
 function performAction(e) {
   const newAnimal = document.getElementById("animal").value;
-  const fav = document.getElementById("fav").value;
+  const fav = document.getElementById("favorite").value;
   getAnimal(baseURL, newAnimal, apiKey).then(function (data) {
     console.log(data);
     postData("/addAnimal", {
@@ -15,6 +15,8 @@ function performAction(e) {
       fact: data.fact,
       fav: fav,
     });
+    // we can do this because of Async!
+    updateUI();
   });
 }
 const getAnimal = async (baseURL, animal, key) => {
@@ -25,6 +27,18 @@ const getAnimal = async (baseURL, animal, key) => {
     return data;
   } catch (error) {
     // appropriately handle the error
+    console.log("error", error);
+  }
+};
+const updateUI = async () => {
+  const request = await fetch("/all");
+  try {
+    const allData = await request.json();
+    console.log(allData);
+    document.getElementById("animalName").innerHTML = allData[0].animal;
+    document.getElementById("animalFact").innerHTML = allData[0].facts;
+    document.getElementById("animalFav").innerHTML = allData[0].fav;
+  } catch (error) {
     console.log("error", error);
   }
 };

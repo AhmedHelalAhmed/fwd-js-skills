@@ -37,11 +37,6 @@ app.get("/", function (request, response) {
 });
 // Create JS object
 const appData = {};
-// Respond with JS object when a GET request is made to the homepage
-app.get("/all", function (request, response) {
-  console.log(request);
-  response.send(appData);
-});
 
 // POST method route
 app.post("/", function (request, response) {
@@ -76,9 +71,17 @@ app.get("/fakeAnimalData", getFakeData);
 function getFakeData(request, response) {
   response.send(fakeData);
 }
+const animalData = [];
 
+// Respond with JS object when a GET request is made to the homepage
+app.get("/all", getData);
+function getData(request, response) {
+  console.log(animalData);
+
+  // console.log(request);
+  response.send(animalData);
+}
 app.post("/addAnimal", addAnimal);
-let animalData = [];
 function addAnimal(req, res) {
   newEntry = {
     animal: req.body.animal,
