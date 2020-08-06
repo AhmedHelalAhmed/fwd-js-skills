@@ -76,3 +76,17 @@ app.get("/fakeAnimalData", getFakeData);
 function getFakeData(request, response) {
   response.send(fakeData);
 }
+
+app.post("/addAnimal", addAnimal);
+let animalData = [];
+function addAnimal(req, res) {
+  newEntry = {
+    animal: req.body.animal,
+    facts: req.body.fact,
+    fav: req.body.fav,
+  };
+
+  animalData.push(newEntry);
+  res.send(animalData);
+  console.log(animalData);
+}

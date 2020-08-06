@@ -7,7 +7,15 @@ document.getElementById("generate").addEventListener("click", performAction);
 
 function performAction(e) {
   const newAnimal = document.getElementById("animal").value;
-  getAnimal(baseURL, newAnimal, apiKey);
+  const fav = document.getElementById("fav").value;
+  getAnimal(baseURL, newAnimal, apiKey).then(function (data) {
+    console.log(data);
+    postData("/addAnimal", {
+      animal: data.animal,
+      fact: data.fact,
+      fav: fav,
+    });
+  });
 }
 const getAnimal = async (baseURL, animal, key) => {
   const res = await fetch(baseURL + animal + key);
